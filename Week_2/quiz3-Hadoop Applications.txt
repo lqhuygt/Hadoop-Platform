@@ -1,0 +1,95 @@
+1.
+Question 1
+Check all databases/stores applications that can run within Hadoop
+
+1 point
+
+HBase
+
+
+Giraph
+
+
+Cassandra
+
+
+Mahout
+
+2.
+Question 2
+Name the high level language that is a main part of Apache Pig
+
+1 point
+
+German
+
+
+Pig Latin
+
+
+C++
+
+
+Python
+
+3.
+Question 3
+Apache Pig can only be run using scripts
+
+1 point
+
+True
+
+
+False
+
+4.
+Question 4
+Check options that are methods of using/accessing Hive
+
+1 point
+
+Hcatalog
+
+
+Beeline
+
+
+WebHDFS
+
+
+WebHcat
+
+5.
+Question 5
+Check features that apply for HBase
+
+1 point
+
+Non-relational distributed database
+
+
+Consistency
+
+
+Compression
+
+
+Relational Database
+
+6.
+Question 6
+List methods of accessing HBase
+
+1 point
+
+Apache HBase shell
+
+
+FORTRAN
+
+
+HBase External API
+
+
+HBase API

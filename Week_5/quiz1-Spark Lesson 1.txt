@@ -1,0 +1,101 @@
+1.
+Question 1
+Apache Spark was developed in order to provide solutions to shortcomings of another project, and eventually replace it. What is the name of this project?
+
+1 point
+
+Hadoop
+
+
+Pig
+
+
+MapReduce
+
+
+HDFS
+
+2.
+Question 2
+Why is Hadoop MapReduce slow for iterative algorithms?
+
+1 point
+
+The Java Virtual Machine uses too much memory
+
+
+Communication is a bottleneck
+
+
+It needs to read off disk for every iteration
+
+
+Iterative algorithms do not scale well
+
+3.
+Question 3
+What is the most important feature of Apache Spark to speedup iterative algorithms?
+
+1 point
+
+Python interface
+
+
+Resiliency to data loss
+
+
+Caching datasets in memory
+
+
+Caching datasets on disk
+
+4.
+Question 4
+Which other Hadoop project can Spark rely to provision and manage the cluster of nodes?
+
+1 point
+
+MapReduce
+
+
+Pig
+
+
+HDFS
+
+
+YARN
+
+5.
+Question 5
+When Spark reads data out of HDFS, what is the process that interfaces directly with HDFS?
+
+1 point
+
+Driver
+
+
+YARN
+
+
+Executor
+
+
+Cluster Manager
+
+6.
+Question 6
+Under which circumstances is preferable to run Spark in Standalone mode instead of relying on YARN?
+
+1 point
+
+When you only plan on running Spark jobs
+
+
+For iterative algorithms
+
+
+Never
+
+
+When we want to mix MapReduce and Spark jobs.

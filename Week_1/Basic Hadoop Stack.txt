@@ -1,0 +1,166 @@
+1.Question 1
+What does SQOOP stand for?
+
+
+System Quality Object Oriented Process
+
+
+SQL to Hadoop
+
+
+Does not stand for anything specific
+
+
+'Sqooping' the data.
+
+2.
+Question 2
+What is not part of the basic Hadoop Stack 'Zoo'?
+
+
+
+Pig
+
+
+Horse
+
+
+Elephant
+
+
+Hive
+
+3.
+Question 3
+What is considered to be part of the Apache Basic Hadoop Modules?
+
+HDFS
+
+
+Yarn
+
+
+MapReduce
+
+
+Impala
+
+4.
+Question 4
+What are the two major components of the MapReduce layer?
+
+1 point
+
+TaskManager
+
+
+JobTracker
+
+
+NameNode
+
+
+DataNode
+
+5.
+Question 5
+What does HDFS stand for?
+
+1 point
+
+Hadoop Data File System
+
+
+Hadoop Distributed File System
+
+
+Hadoop Data File Scalability
+
+
+Hadoop Datanode File Security
+
+6.
+Question 6
+What are the two majority types of nodes in HDFS?
+
+1 point
+
+DataNode
+
+
+NameNode
+
+
+RackNode
+
+
+BlockNode
+
+
+MetaNode
+
+7.
+Question 7
+What is Yarn used as an alternative to in Hadoop 2.0 and higher versions of  Hadoop?
+
+1 point
+
+Pig
+
+
+Hive
+
+
+ZooKeeper
+
+
+MapReduce
+
+
+HDFS
+
+8.
+Question 8
+Could you run an existing MapReduce application using Yarn?
+
+1 point
+
+No
+
+
+Yes
+
+9.
+Question 9
+What are the two basic layers comprising the Hadoop Architecture?
+
+1 point
+
+ZooKeeper and MapReduce
+
+
+HDFS and Hive
+
+
+MapReduce and HDFS
+
+
+Impala and HDFS 
+
+10.
+Question 10
+What are Hadoop advantages over a traditional platform?
+
+1 point
+
+Scalability
+
+
+Reliability
+
+
+Flexibility
+
+
+Cost
+

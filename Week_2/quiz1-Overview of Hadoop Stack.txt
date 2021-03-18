@@ -1,0 +1,75 @@
+1.
+Question 1
+Choose features introduced in Hadoop2 HDFS
+
+1 point
+
+Multiple DataNodes
+
+
+Heterogenous storage including SSD, RAM_DISK
+
+
+Multiple namespaces
+
+
+MapReduce
+
+
+HDFS Federation
+
+2.
+Question 2
+In Hadoop2 HDFS a namespace can generate block IDs for new blocks without coordinating with other namespaces.
+
+1 point
+
+True
+
+
+False
+
+3.
+Question 3
+This is a new feature in YARN:
+
+1 point
+
+High Availability ResourceManager
+
+
+web services REST APIs
+
+
+MapReduce
+
+
+ApplicationMasters
+
+4.
+Question 4
+Apache Tez can run independent of YARN
+
+1 point
+
+True
+
+
+False
+
+5.
+Question 5
+In Hadoop2 with YARN 
+
+1 point
+
+ResourceManagers are running on every compute node
+
+
+Each application has its own ApplicationMaster
+
+
+Only MapReduce jobs can be run
+
+
+Each application has its own ResourceManager
