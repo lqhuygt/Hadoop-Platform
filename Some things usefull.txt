@@ -1,0 +1,253 @@
+Trieuthehien123
+Pass: Trieuthehien@1721050400
+
+- xác định số k trong thuật toán knn có thể xác định bằng cách nếu số phân lớp là chẵn thì k chọn sẽ là các số lẻ
+hoặc sử dụng phương pháp elbow để xác định k.
+
+- Anh em Mì quất ngay nè! Freeeeeeeeee!
+[Lưu ngay] 14 KÊNH ONLINE TỰ HỌC MIỄN PHÍ MACHINE LEARNING  
+🤖 Học máy (machine learning) là một nhánh (mảng con) của trí tuệ nhân tạo cung cấp cho các hệ thống và máy móc khả năng tự học và tối ưu hóa các quy trình mà không cần các nhà phát triển (developers) phải lập trình rõ ràng.
+🤖 Lưu ngay 14 website và kênh youtube giúp bạn tự học #MachineLearning nhé!
+👉 Machine Learning by Andrew NG - https://www.coursera.org/learn/machine-learning
+👉 Intro to ML by Udacity - https://www.udacity.com/.../intro-to-machine-learning--ud120
+👉 EdX’s Learning from Data(Introductory Machine Learning) - https://www.edx.org/.../learning-from-data-introductory...#!
+👉 Introduction to Machine Learning for Coders - http://course18.fast.ai/ml
+👉 Statistical Machine Learning by CMU - https://www.youtube.com/watch...
+👉 Coursera’s Neural Networks for Machine Learning - https://www.youtube.com/watch...
+👉 Kaggle Complete Roadmap for Machine Learning - https://www.kaggle.com/learn/overview
+👉 EdX’s Principles of Machine Learning - https://www.edx.org/course/principles-of-machine-learning
+👉 Coursera’s Machine Learning Specialization - https://www.coursera.org/specializations/machine-learning
+👉 Machine Learning Crash Course by Google - https://developers.google.com/machine-learning/crash-course
+👉 Machine Learning Course at W3Schools - https://www.w3schools.com/.../python_ml_getting_started.asp
+👉 Intro to Machine Learning Course at Kaggle - https://www.kaggle.com/learn/intro-to-machine-learning
+👉 Intermediate Machine Learning Course at Kaggle - https://www.kaggle.com/learn/intermediate-machine-learning
+👉 Machine Learning with Python - https://cognitiveclass.ai/.../machine-learning-with-python
+
+
+
+===========================================
+
+
+- MATPLOTLIB
+	+ plt.legend(loc="lower right") #chỉnh vị trí của chú thích ở đây là góc phải bên dưới
+	+ plt.xticks(rotation=50) #chỉnh góc nghiêng của label trên trục x
+
+- SQL
+	+ COUNT(*) đếm cả NULL còn COUNT(colunm) thì không
+	--------------
+	+ Các bước chuẩn hóa CSDL:
+		1NF: Mỗi ô của bảng chỉ nên có duy nhất 1 giá trị, Mỗi bản ghi sẽ là duy nhất
+		2NF: Trước tiên phải tuân thủ nguyên tắc 1NF,  Khóa chính là một cột đơn(riêng lẻ).
+		3NF: đảm bảo nguyên tắc của 2NF, Không có sự bắc cầu trong phụ thuộc hàm giữa các thuộc tính.
+	+ CEIL(): làm tròn lên
+	+ PIVOT(): chuyển bảng dạng cột thành hàng
+	+ DATEDIFF(): tính sự chênh lệch giữa ngày, tháng, năm, ....
+
+- BIG DATA
+	+ Hadoop dùng để lưu trữ và xử lý dữ liệu
+	+ Cấu trúc của HDFS gồm: NameNode(master) và DataNode
+	+ Hadoop Map reduce dùng để xử lý dữ liệu ở Hadoop version1 sau sang version2 được thay thế bằng spark
+	+ DataWarehouse được lấy từ DB dùng để phục cho report và có thể tái sử dụng nhiều lần
+	+ ETL (Extract - Transform - Load)
+	+ 2 mô hình thiết kế DataWarehouse phổ biến đó là:  Star Schema và Snowflake
+	+ Datalake là một kho lưu trữ trung tâm chứa Raw Data (dữ liệu thô). 
+	Dữ liệu bên trong Datalake là dữ liệu hoàn toàn chưa qua xử lý.
+	+ NOTE: mô hình thì quy trình ETL phải từ Database → Datalake → Data Warehouse.
+	+ DataMart là mô hình thu nhỏ của DataWarehouse hoặc là một DataWarehose được chia nhỏ thành nhiều phần
+	+Data Warehouse luôn được thiết kế ở dạng OLAP cho mục đích Analytics (read là chính, còn insert, update, delete là phụ) 
+	còn OLTP dành cho RDBMS thiên về việc update record
+
+	-------------------------------------------------------------------------------------------
+
+	Hadoop cmd
+	+ Hadoop version: kiểm tra phiên bản hadoop
+	+ Hadoop star-all.cmd: Khởi động tât cả hệ thống hadoop
+	+ Hadoop start/stop-dfs.cmd: khởi động hoặc tắt name node
+	+ Hadoop start/stop-yarn.cmd: khởi động hoặc tắt data node
+	+ Hadoop jps:
+	+ check list các file trong folder: hdfs dfs -ls <ten duong dan> 
+	+ Tạo folder mới: hdfs dfs -mkdir [-P] /mydata
+	+ put data from local machine to HDFS:
+		hdfs dfs -put <source> <dest> => ex: hdfs dfs -put /C:/Downloads/... /mydata 
+		hdfs dfs -coppyFromLocal <source> <dest>
+		hdfs dfs -moveFromLocal <source> <dest>
+	+ get data from HDFS to localmachine
+		hdfs dfs -get <source> <dest> => ex: hdfs dfs -get /mydata  /C:/Downloads/...
+		hdfs dfs coppyToLocal <source> <dest>
+		hdfs dfs -moveToLocal <src> <localDest> cái này sẽ xóa file hoặc thư mục trong hdfs rồi di chuyển
+	+ read content file
+		hdfs dfs -cat <ten file> => ex: hdfs dfs -cat /mydata/code.txt
+		hdfs dfs -tail ten file>
+	+ check dung lượng đã sử dụng trên hdfs
+		hdfs dfs -du -s -h <ten folder> (kích thước tổng của folder)
+		hdfs dfs -du -h <ten folder> (kích thước của từng file trrong folder)
+	+ check dung lượng free
+		hdfs dfs -df -h <ten folder>
+	+ thay đổi quyền truy cập user
+		hdfs dfs -chmod 755 /mydata/code.txt
+	+ kiểm tra thời gian sửa đổi file gần nhất
+		hdfs dfs -stat /mydata/code.txt
+	+ di chuyển tệp hoặc thư mục đến chỗ khác
+		hdfs dfs -mv <src><dest>
+	+ coppy tệp hoặc thư mục đến chỗ khác
+		hdfs dfs -cp <src> <dest>
+	+ xóa file hoặc thư mục
+		hdfs dfs -rm <path>
+	+ Truy xuất tất cả các tệp phù hợp với đường dẫn src trong HDFS và sao chép chúng vào một tệp duy nhất
+		hdfs dfs -getmerge <src> <localDest>
+	-------------------------------------------------
+
+	HADOOP THEORY
+	
+	introduce hadoop
+	- What does SQOOP stand for? sql to hadoop
+	- What is considered to be part of the Apache Basic Hadoop Modules? HDFS
+	- What are the two major components of the MapReduce layer? TaskManager, JobTracker
+	- What does HDFS stand for? Hdoop distributed file system
+	- What are the two majority types of nodes in HDFS? Datanode and Namenode
+	- What is Yarn used as an alternative to in Hadoop 2.0 and higher versions of Hadoop? Mapreduce
+	- Could you run an existing MapReduce application using Yarn? Yes
+	- What are the two basic layers comprising the Hadoop Architecture? MapReduce and HDFS
+	- What are Hadoop advantages over a traditional platform? Scalability, Reliability, Flexibility, Cost
+	**********
+
+	- Choose features introduced in Hadoop2 HDFS?
+		Heterogenous storage including SSD RAM_DISK
+		Multiple namespaces 
+		HDFS Federation
+	- In Hadoop2 HDFS a namespace can generate block IDs for new blocks without coordinating with other namespaces. True
+	- This is a new feature in YARN:
+		High Availability ResourceManager,
+		web services REST APIs
+		ApplicationMasters
+	- Apache Tez can run independent of YARN: False
+	- In Hadoop2 with YARN
+		Each application has its own ApplicationMaster
+
+	************
+	Hadoop excution enviroment
+	- Apache Spark cannot operate without YARN? False
+	- Apache Tez can support dynamic DAG changes? True
+	- Give an example of an execution framework that supports cyclic data flow? Spark
+	- The Fairshare scheduler can support queues/sub-queues? True
+	- The Capacity Scheduler can use ACLs to control security? True
+	- Mark choices that apply for Apache Spark:
+		Can run integrated with YARN
+		Supports in memory computing
+		Can be accessed/used from high level languages like Java, Scala, Python, and R.
+	- Which of the following choices apply for Apache Tez?
+		Supports complex directed acyclic graph (DAG) of tasks
+		Supports in memory caching of data
+		Improves resource usage efficiency
+	*********
+	Hadoop application
+	- Applications that can run within Hadoop: HBase, Cassandra
+	- Name the high level language that is a main part of Apache Pig: PigLatin
+	- Apache Pig can only be run using scripts: False
+	- Check options that are methods of using/accessing Hive: Hcatalog, Beeline, WebHcat
+	- Check features that apply for HBase
+		Non-relational distributed database	
+		Compression
+	- List methods of accessing HBase:
+		Apache HBase shell
+		HBase External API
+		HBase API
+	**********
+	HDFS achitecture
+	- HDFS is strictly POSIX compliant: False
+	- Following issues may be caused by lot of small files in HDFS
+		NameNode memory usage increases significantly
+		Network load decreases
+		Number of map tasks need to process the same amount of data will be larger.
+	- You are writing a 10GB file into HDFS with a replication of 
+	2 and block size of 64MB. How much total disk space will this file use? 20GB
+	- What is the first step in a write process from a HDFS client?
+		Immediately contact the NameNode
+
+	- HDFS NameNode is not rack aware when it places the replica blocks: False
+	***********
+	HDFS perfomance, tuning, and robustness(Hiệu suất HDFS, điều chỉnh và độ mạnh mẽ)
+	- Name the configuration file which holds HDFS tuning parameters
+		hdfs-site.xml
+	- Name the parameter that controls the replication factor in HDFS:
+		dfs.replication
+	- Check answers that apply when replication is lowered
+		HDFS is less robust
+		less likely make data local to more workers
+		more space
+	- Check answers that apply when NameNode fails to receive heartbeat from a DataNode
+		DataNode is marked dead
+		No new I/O is sent to particular DataNode that missed heartbeat check
+		Blocks below replication factor are re-replicated on other DataNodes
+	- How is data corruption mitigated in HDFS
+		checksums are computed on file creation and stored in HDFS namespace for verification when data is retrieved.
+	*************
+	accessing HDFS
+	- Which of the following are valid access mechanisms for HDFS
+		Accessed via Java API,
+		Accessed via HTTP
+	- Which of the following commands will give information on the status of DataNodes
+		hdfs dfsadmin -report
+	**************
+	MapReduce
+	- Which of these kinds of data motivated the Map/Reduce framework?
+		Large number of internet documents that need to be indexed for searching by words
+	- What is the organizing data structure for map/reduce programs?
+		A list of identification keys and some value associated with that identifier
+	- In map/reduce framework, which of these logistics does Map/Reduce do with the map function?
+		Distribute map to cluster nodes, run map on the data partitions at the same time
+	- Map/Reduce performs a ‘shuffle’ and grouping. That means it...
+		Shuffles <key,value> pairs into different partitions according to the key value, and sorts within the partitions by key.
+	- In the word count example, what is the key?
+		The word itself.
+	- Streaming map/reduce allows mappers and reducers to be written in what languages:
+		All of the above
+	- The assignment asked you to run with 2 reducers. When you use 2 reducers instead of 1 reducer, what is the difference in global sort order?
+		With 1 reducer, but not 2 reducers, the word counts are in global sort order by word.
+	***************
+	Spark1
+	- Apache Spark was developed in order to provide solutions to shortcomings of another project, and eventually replace it. What is the name of this project?
+		MapReduce
+	- Why is Hadoop MapReduce slow for iterative algorithms?
+		It needs to read off disk for every iteration
+	- What is the most important feature of Apache Spark to speedup iterative algorithms?
+		Caching datasets in memory
+	- Which other Hadoop project can Spark rely to provision and manage the cluster of nodes?
+		YARN
+	- When Spark reads data out of HDFS, what is the process that interfaces directly with HDFS?
+		Executor
+	- Under which circumstances is preferable to run Spark in Standalone mode instead of relying on YARN?
+		When you only plan on running Spark jobs
+
+	*************
+	Spark2
+	- .How can you create an RDD? Mark all that apply
+		Reading from a local file available both on the driver and on the workers
+		Reading from HDFS
+		Apply a transformation to an existing RDD
+	- How does Spark make RDDs resilient in case a partition is lost?
+		Tracks the history of each partition and reruns what is needed to restore it
+	- Which of the following sentences about flatMap and map are true?
+		flatMap accepts a function that returns multiple elements, those elements are then flattened out into a continuous RDD.
+		map transforms elements with a 1 to 1 relationship, 1 input - 1 output
+	- Check all wide transformations
+		Repartition, even if it triggers a shuffle, 
+		can improve performance of your pipeline by balancing the data distribution after a heavy filtering operation
+	*************
+	Spark3
+	- Check all true statements about the Directed Acyclic Graph Scheduler
+		The DAG is managed by the cluster manager
+		A DAG is used to track dependencies of each partition of each RDD
+	- Why is building a DAG necessary in Spark but not in MapReduce?
+		Because MapReduce always has the same type of workflow, Spark needs to accommodate diverse workflows.
+	- What are the differences between an action and a transformation? Mark all that apply
+		A transformation is from worker nodes to worker nodes, an action between worker nodes and the Driver (or a data source like HDFS)
+		A transformation is lazy, an action instead executes immediately.
+	- Generally, which are good stages to mark a RDD for caching in memory?
+		The first RDD, just after reading from disk, so we avoid reading from disk again.
+		At the start of an iterative algorithm.
+	- What are good cases for using a broadcast variable? Mark all that apply
+		Copy a small/medium sized RDD for a join
+		Copy a large lookup table to all worker nodes
+		Copy a large configuration dictionary to all worker nodes
+	-
