@@ -92,9 +92,15 @@ hoặc sử dụng phương pháp elbow để xác định k.
 	+ coppy tệp hoặc thư mục đến chỗ khác
 		hdfs dfs -cp <src> <dest>
 	+ xóa file hoặc thư mục
-		hdfs dfs -rm <path>
+		hdfs dfs -rm -r <path>
 	+ Truy xuất tất cả các tệp phù hợp với đường dẫn src trong HDFS và sao chép chúng vào một tệp duy nhất
 		hdfs dfs -getmerge <src> <localDest>
+	+ NẾU FILE HOẶC ĐƯỜNG DẪN ĐANG Ở CHẾ ĐỘ SAFE MODE MUỐN XÓA THÌ PHẢI TẮT NÓ ĐI MỚI XÓA ĐƯỢC
+		hdfs dfsadmin -safemode leave
+	+ muốn bật lại safe mode thì
+		hdfs dfsadmin -safemode enter
+	+ kiểm tra safe mode đang ở trạng thái nào
+		hdfs dfsadmin -safemode get
 	-------------------------------------------------
 
 	HADOOP THEORY
@@ -152,7 +158,9 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		Apache HBase shell
 		HBase External API
 		HBase API
-	**********
+
+	*******************************************************************************************
+
 	HDFS achitecture
 	- HDFS is strictly POSIX compliant: False
 	- Following issues may be caused by lot of small files in HDFS
@@ -165,7 +173,9 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		Immediately contact the NameNode
 
 	- HDFS NameNode is not rack aware when it places the replica blocks: False
-	***********
+
+	*******************************************************************************************
+
 	HDFS perfomance, tuning, and robustness(Hiệu suất HDFS, điều chỉnh và độ mạnh mẽ)
 	- Name the configuration file which holds HDFS tuning parameters
 		hdfs-site.xml
@@ -181,14 +191,18 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		Blocks below replication factor are re-replicated on other DataNodes
 	- How is data corruption mitigated in HDFS
 		checksums are computed on file creation and stored in HDFS namespace for verification when data is retrieved.
-	*************
+
+	***************************************************************************************
+
 	accessing HDFS
 	- Which of the following are valid access mechanisms for HDFS
 		Accessed via Java API,
 		Accessed via HTTP
 	- Which of the following commands will give information on the status of DataNodes
 		hdfs dfsadmin -report
-	**************
+
+	********************************************************************************
+
 	MapReduce
 	- Which of these kinds of data motivated the Map/Reduce framework?
 		Large number of internet documents that need to be indexed for searching by words
@@ -204,7 +218,9 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		All of the above
 	- The assignment asked you to run with 2 reducers. When you use 2 reducers instead of 1 reducer, what is the difference in global sort order?
 		With 1 reducer, but not 2 reducers, the word counts are in global sort order by word.
-	***************
+
+	****************************************************************************************
+
 	Spark1
 	- Apache Spark was developed in order to provide solutions to shortcomings of another project, and eventually replace it. What is the name of this project?
 		MapReduce
@@ -228,12 +244,14 @@ hoặc sử dụng phương pháp elbow để xác định k.
 	- How does Spark make RDDs resilient in case a partition is lost?
 		Tracks the history of each partition and reruns what is needed to restore it
 	- Which of the following sentences about flatMap and map are true?
-		flatMap accepts a function that returns multiple elements, those elements are then flattened out into a continuous RDD.
+		flatMap accepts a function that returns multiple elements, those elements are then flattened out into a 			continuous RDD.
 		map transforms elements with a 1 to 1 relationship, 1 input - 1 output
 	- Check all wide transformations
 		Repartition, even if it triggers a shuffle, 
-		can improve performance of your pipeline by balancing the data distribution after a heavy filtering operation
-	*************
+		can improve performance of your pipeline by balancing the data distribution after a heavy filtering 			operation
+
+	************************************************************************
+
 	Spark3
 	- Check all true statements about the Directed Acyclic Graph Scheduler
 		The DAG is managed by the cluster manager
@@ -241,7 +259,7 @@ hoặc sử dụng phương pháp elbow để xác định k.
 	- Why is building a DAG necessary in Spark but not in MapReduce?
 		Because MapReduce always has the same type of workflow, Spark needs to accommodate diverse workflows.
 	- What are the differences between an action and a transformation? Mark all that apply
-		A transformation is from worker nodes to worker nodes, an action between worker nodes and the Driver (or a data source like HDFS)
+		A transformation is from worker nodes to worker nodes, an action between worker nodes and the Driver (or a 			data source like HDFS)
 		A transformation is lazy, an action instead executes immediately.
 	- Generally, which are good stages to mark a RDD for caching in memory?
 		The first RDD, just after reading from disk, so we avoid reading from disk again.
@@ -250,4 +268,30 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		Copy a small/medium sized RDD for a join
 		Copy a large lookup table to all worker nodes
 		Copy a large configuration dictionary to all worker nodes
-	-
+	
+	===============================================================================================
+
+	- TRONG SPARK RDD có 2 kiểu operator:
+		+ Transformation: lazy evalation: Biến đổi từ 1 RDD này sang 1 hoặc nhiều RDD khác
+			*Narow Transformation: dùng để tính trong 1 partition và sử dụng dữ liệu của một parttion khác
+				vd: map, flatmap, Union(gom 2 RDD lại với nhau), Sample, MapPatition, Filter,..
+			*Wide Transformation: sử dụng dữ liệu từ nhiều parttion khác
+				vd: -Intersect(join 2 data với nhau rồi lấy phần chung của 2 data đó),
+				    -Distinct(lấy ra phần tử không trùng nhau),                                     
+				    -ReduceByKey(tính toán trên từng cụm rồi mới tổng hợp hết lại => 				                                    thường được sử dụng nhiều hơn), 
+				    -GroupByKey(tổng hợp hết các cụm lại rồi mới tính toán  => ít sử dụng hơn), 
+				    -CombineByKey, 
+				    -Join(Kết nối 2 data với nhau), 
+				    -RePartition(co dãn partition của dữ liệu tăng hoặc giảm dữ liệu),
+				    -coalesce(co dãn partition của dữ liệu chỉ giảm dữ liệu),....
+		+ Action: Trả về value
+			vd: count, collect, take, top, CountByValue,...
+	==================================================================================================
+	
+	- Persist() and cache():
+		+ là kỹ thuật được sử dụng trong tối ưu hiệu năng tính toán
+		+ thuận lợi cho việc tính toán song song
+		+ cache(): lưu kết quả trung gian vào RAM
+		+ persist(): có nhiều lựa chọn lưu trên RAM hoặc trên DISK hoặc cả 2
+
+ 
