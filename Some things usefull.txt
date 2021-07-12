@@ -29,8 +29,16 @@ hoặc sử dụng phương pháp elbow để xác định k.
 
 
 - MATPLOTLIB
-	+ plt.legend(loc="lower right") #chỉnh vị trí của chú thích ở đây là góc phải bên dưới
-	+ plt.xticks(rotation=50) #chỉnh góc nghiêng của label trên trục x
+	- plt.legend(loc="lower right") #chỉnh vị trí của chú thích ở đây là góc phải bên dưới
+	- plt.xticks(rotation=50) #chỉnh góc nghiêng của label trên trục x
+	- tranpose(): hoán đổi hàng về cột
+	- line chart: muốn plot đối tượng thì dữ liệu của đối tượng phải theo cột trong dataframe hoặc đưa về dạng series
+- PANDAS
+	- dùng pivot_table(index='column', columns='column', values='column',...) để tổng hợp 
+	- nó dùng chia 1 cột thành nhiều cột khác được nhóm cùng một nhóm
+	- Tương tự có thể dụng groupBy() + count() + unstack()
+	- hoặc pd.crosstab(index, column) hoặc melt()
+	- 
 
 - SQL
 	+ COUNT(*) đếm cả NULL còn COUNT(colunm) thì không
@@ -293,5 +301,57 @@ hoặc sử dụng phương pháp elbow để xác định k.
 		+ thuận lợi cho việc tính toán song song
 		+ cache(): lưu kết quả trung gian vào RAM
 		+ persist(): có nhiều lựa chọn lưu trên RAM hoặc trên DISK hoặc cả 2
+	
+	- select() is a transformation that returns a new DataFrame and holds the columns that are selected whereas 				collect() is an action that returns the entire data set in an Array to the driver
+
+	- withColumn() is a transformation function of DataFrame which is used to change the value, convert the datatype of 		an existing column, create a new column, and many more.
+	
+	- pivot() function to rotate the data from one column into multiple columns. 
+
+	- partitionBy() is a way to split a large dataset into smaller datasets based on one or more partition keys
+
+	- While you are create Data Lake out of Azure, HDFS or AWS you need to understand how to partition your data at 		rest (File system/disk), PySpark partitionBy() and repartition() help you partition the data and 				eliminating the Data Skew on your large datasets.
+
+	- Row_Number(): xếp hạng k có duplicate
+	- rank(): xếp hạng có dupplicate và thứ tự k liên tiếp
+	- dense_rank(): xếp hạng có duplicate và thứ tự liên tiếp
+
+	=============================================================================================================
+
+	ERROR IN PYSPARK
+	
+	- AttributeError: 'function' object has no attribute '_get_object_id': đặt tên trùng với functions
+	- Nếu để show() ở ngay sau thì kiểu của đôi tượng sẽ là NonType => Ta phải tạo biến và gọi show() ở biến đã gán
+
+	=====================================================================================================
+
+KAFKA
+	- zookeeper: được dùng để quản lý các broker
+	- broker : chứa các Partition
+	- partition: nơi lưu trữ các topic
+	- topic: nơi dữ liệu chuyền qua giữa producer và consumer
+	- producer: để publish message vào các topic là bên gửi dữ liệu
+	- consumer: để subscribe vào topic là bên nhận dữ liệu
+	- localhost zookeeper 2181
+	- locahost kafka 9092
+
+	- Các bước run kafka trên window:
+	- b1: cd tới ổ chứa kafka => cd c:\kafka\
+	- b2: chạy zookeeper 
+		.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+	- b3: chạy kafka
+		.\bin\windows\kafka-server-start.bat .\config\server.properties
+	- b4: tạo topic
+		.\bin\windows\kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 		--topic TestTopic
+	- b5: check list topic trong zookeeper
+		.\bin\windows\kafka-topics.bat --list --zookeeper localhost:2181
+	- b6: chạy producer để tạo ra message
+		.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic TestTopic
+	- b7: chạy consumer để check message đã gửi tới chưa
+		.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TestTopic --from-		beginning
+		
+
+	
+	
 
  
