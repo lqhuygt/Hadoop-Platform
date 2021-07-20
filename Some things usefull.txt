@@ -348,7 +348,19 @@ KAFKA
 	- b6: chạy producer để tạo ra message
 		.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic TestTopic
 	- b7: chạy consumer để check message đã gửi tới chưa
-		.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TestTopic --from-		beginning
+		.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic TestTopic --from-				beginning
+
+	- Need some packages to talk to Kafka in Pyspark Jupiter Notebook
+		import os
+		os.environ['PYSPARK_SUBMIT_ARGS'] = '--packages org.apache.spark:spark-streaming-kafka-0-					8_2.11:2.1.0,org.apache.spark:spark-sql-kafka-0-10_2.11:2.1.0 pyspark-shell'
+		from ast import literal_eval
+
+	- Option startingOffsets earliest is used to read all data available in the Kafka at the start of the query, we may 		not use this option that often and the default value for startingOffsets is latest which reads only new 		data that’s not been processed.
+
+	- Note **: Để push data từ local, database,.... vào kafka Topic ta dùng kafka connect
+		+ Creating a Source Config File: cấu hình config/connect-file-source.properties
+		+ Creating a Worker Config File: cấu hình config/connect-standalone.properties
+		+ Running Kafka Connect: .\bin\windows\connect-standalone.bat config/connect-standalone.properties 					config/connect-file-source.properties
 		
 
 	
